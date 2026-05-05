@@ -13,3 +13,5 @@ __pycache__/
 # OS
 .DS_Store
 Thumbs.db
+data/qc_pub_fy2007.csv
+data/qc_pub_fy2007.csv
