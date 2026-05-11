@@ -14,22 +14,22 @@ from sklearn.impute import SimpleImputer
 
 
 #New Mexico
-nm07_orig = pd.read_csv('../data/nm07.csv')
-nm17_orig = pd.read_csv('../data/nm17.csv')
+nm07_orig = pd.read_csv('./data/nm07.csv')
+nm17_orig = pd.read_csv('./data/nm17.csv')
 
 #Nebraska
-ne07_orig = pd.read_csv('../data/ne07.csv')
-ne17_orig = pd.read_csv('../data/ne17.csv')
+ne07_orig = pd.read_csv('./data/ne07.csv')
+ne17_orig = pd.read_csv('./data/ne17.csv')
 
 #New Mexico
-nm07 = pd.read_csv('../data/nm07.csv')
-nm17 = pd.read_csv('../data/nm17.csv')
+nm07 = pd.read_csv('./data/nm07.csv')
+nm17 = pd.read_csv('./data/nm17.csv')
 
 #Nebraska
-ne07 = pd.read_csv('../data/clean_ne07.csv')
-ne17 = pd.read_csv('../data/clean_ne17.csv')
+ne07 = pd.read_csv('./data/clean_ne07.csv')
+ne17 = pd.read_csv('./data/clean_ne17.csv')
 
-corr_features = pd.read_csv('../data/corr_features.csv')
+corr_features = pd.read_csv('./data/corr_features.csv')
 ################
     #EDA
 ################
