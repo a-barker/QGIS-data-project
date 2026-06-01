@@ -40,7 +40,7 @@
         <script>
         var map = L.map('map', {
             zoomControl:false, maxZoom:28, minZoom:1
-        }).fitBounds([[17.290045369107915,-139.29697629439144],[53.13185592526409,-45.078539306891415]]);
+        }).fitBounds([[15.849518556860186,-139.29697629439144],[54.02417801529201,-45.078539306891415]]);
         var hash = new L.Hash(map);
         map.attributionControl.setPrefix('<a href="https://github.com/qgis2web/qgis2web" target="_blank">qgis2web</a> &middot; <a href="https://leafletjs.com" title="A JS library for interactive maps">Leaflet</a> &middot; <a href="https://qgis.org">QGIS</a>');
         var autolinker = new Autolinker({truncate: {length: 30, location: 'smart'}});
@@ -127,40 +127,14 @@
         function pop_PredSNAP2018_1(feature, layer) {
             var popupContent = '<table>\
                     <tr>\
-                        <td colspan="2">' + (feature.properties['qc_id'] !== null ? autolinker.link(String(feature.properties['qc_id']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                        <td colspan="2"><strong>State</strong><br />' + (feature.properties['NAME'] !== null ? autolinker.link(String(feature.properties['NAME']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
-                        <td colspan="2">' + (feature.properties['statefp'] !== null ? autolinker.link(String(feature.properties['statefp']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                        <th scope="row">SNAP Count No</th>\
+                        <td>' + (feature.properties['snapNo'] !== null ? autolinker.link(String(feature.properties['snapNo']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
-                        <td colspan="2">' + (feature.properties['statens'] !== null ? autolinker.link(String(feature.properties['statens']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['affgeoid'] !== null ? autolinker.link(String(feature.properties['affgeoid']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['geoid'] !== null ? autolinker.link(String(feature.properties['geoid']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['stusps'] !== null ? autolinker.link(String(feature.properties['stusps']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['name'] !== null ? autolinker.link(String(feature.properties['name']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['lsad'] !== null ? autolinker.link(String(feature.properties['lsad']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['aland'] !== null ? autolinker.link(String(feature.properties['aland']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['awater'] !== null ? autolinker.link(String(feature.properties['awater']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['snapno'] !== null ? autolinker.link(String(feature.properties['snapno']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['snapyes'] !== null ? autolinker.link(String(feature.properties['snapyes']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                        <td colspan="2">' + (feature.properties['snapYes'] !== null ? autolinker.link(String(feature.properties['snapYes']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
                     </tr>\
                 </table>';
             var content = removeEmptyRowsFromPopupContent(popupContent, feature);
@@ -271,34 +245,31 @@
         function pop_StatesNamesLabel_2(feature, layer) {
             var popupContent = '<table>\
                     <tr>\
-                        <td colspan="2">' + (feature.properties['qc_id'] !== null ? autolinker.link(String(feature.properties['qc_id']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                        <td colspan="2">' + (feature.properties['STATEFP'] !== null ? autolinker.link(String(feature.properties['STATEFP']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
-                        <td colspan="2">' + (feature.properties['statefp'] !== null ? autolinker.link(String(feature.properties['statefp']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                        <td colspan="2">' + (feature.properties['STATENS'] !== null ? autolinker.link(String(feature.properties['STATENS']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
-                        <td colspan="2">' + (feature.properties['statens'] !== null ? autolinker.link(String(feature.properties['statens']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                        <td colspan="2">' + (feature.properties['AFFGEOID'] !== null ? autolinker.link(String(feature.properties['AFFGEOID']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
-                        <td colspan="2">' + (feature.properties['affgeoid'] !== null ? autolinker.link(String(feature.properties['affgeoid']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                        <td colspan="2">' + (feature.properties['GEOID'] !== null ? autolinker.link(String(feature.properties['GEOID']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
-                        <td colspan="2">' + (feature.properties['geoid'] !== null ? autolinker.link(String(feature.properties['geoid']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                        <td colspan="2">' + (feature.properties['STUSPS'] !== null ? autolinker.link(String(feature.properties['STUSPS']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
-                        <td colspan="2">' + (feature.properties['stusps'] !== null ? autolinker.link(String(feature.properties['stusps']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                        <td colspan="2">' + (feature.properties['NAME'] !== null ? autolinker.link(String(feature.properties['NAME']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
-                        <td colspan="2">' + (feature.properties['name'] !== null ? autolinker.link(String(feature.properties['name']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                        <td colspan="2">' + (feature.properties['LSAD'] !== null ? autolinker.link(String(feature.properties['LSAD']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
-                        <td colspan="2">' + (feature.properties['lsad'] !== null ? autolinker.link(String(feature.properties['lsad']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                        <td colspan="2">' + (feature.properties['ALAND'] !== null ? autolinker.link(String(feature.properties['ALAND']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
-                        <td colspan="2">' + (feature.properties['aland'] !== null ? autolinker.link(String(feature.properties['aland']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['awater'] !== null ? autolinker.link(String(feature.properties['awater']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                        <td colspan="2">' + (feature.properties['AWATER'] !== null ? autolinker.link(String(feature.properties['AWATER']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
                     </tr>\
                 </table>';
             var content = removeEmptyRowsFromPopupContent(popupContent, feature);
@@ -338,7 +309,7 @@
         var overlaysTree = [
             {label: 'StatesNamesLabel', layer: layer_StatesNamesLabel_2},
             {label: 'Pred SNAP 2018<br /><table><tr><td style="text-align: center;"><img src="legend/PredSNAP2018_1_Over8000.png" /></td><td>Over 800</td></tr><tr><td style="text-align: center;"><img src="legend/PredSNAP2018_1_7007991.png" /></td><td>700-799</td></tr><tr><td style="text-align: center;"><img src="legend/PredSNAP2018_1_6006992.png" /></td><td>600-699</td></tr><tr><td style="text-align: center;"><img src="legend/PredSNAP2018_1_5005993.png" /></td><td>500-599</td></tr><tr><td style="text-align: center;"><img src="legend/PredSNAP2018_1_Under5004.png" /></td><td>Under 500</td></tr></table>', layer: layer_PredSNAP2018_1},
-            {label: "EsriWorldGrayCanvas", layer: layer_EsriWorldGrayCanvas_0, radioGroup: 'bm' },]
+            {label: "Esri.WorldGrayCanvas", layer: layer_EsriWorldGrayCanvas_0, radioGroup: 'bm' },]
         var lay = L.control.layers.tree(null, overlaysTree,{
             //namedToggle: true,
             //selectorBack: false,
