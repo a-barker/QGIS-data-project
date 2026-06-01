@@ -758,19 +758,32 @@ function fnc_project_color(values, context) {
 
 
 function exp_PredSNAP2018_1rule0_eval_expression(context) {
-    // snapYes > 699
+    // snapYes > 799
 
     var feature = context.feature;
     
     if (feature.properties) {
-        return (feature.properties['snapYes']  > 699);
+        return (feature.properties['snapYes']  > 799);
     } else {
-        return (feature['snapYes']  > 699);
+        return (feature['snapYes']  > 799);
     }
 }
 
 
 function exp_PredSNAP2018_1rule1_eval_expression(context) {
+    // snapYes > 699 AND snapYes < 800
+
+    var feature = context.feature;
+    
+    if (feature.properties) {
+        return ((feature.properties['snapYes']  > 699) && (feature.properties['snapYes']  < 800));
+    } else {
+        return ((feature['snapYes']  > 699) && (feature['snapYes']  < 800));
+    }
+}
+
+
+function exp_PredSNAP2018_1rule2_eval_expression(context) {
     // snapYes > 599 AND snapYes < 700
 
     var feature = context.feature;
@@ -783,7 +796,7 @@ function exp_PredSNAP2018_1rule1_eval_expression(context) {
 }
 
 
-function exp_PredSNAP2018_1rule2_eval_expression(context) {
+function exp_PredSNAP2018_1rule3_eval_expression(context) {
     // snapYes > 499 AND snapYes < 600
 
     var feature = context.feature;
@@ -796,27 +809,14 @@ function exp_PredSNAP2018_1rule2_eval_expression(context) {
 }
 
 
-function exp_PredSNAP2018_1rule3_eval_expression(context) {
-    // snapYes > 399 AND snapYes < 500
-
-    var feature = context.feature;
-    
-    if (feature.properties) {
-        return ((feature.properties['snapYes']  > 399) && (feature.properties['snapYes']  < 500));
-    } else {
-        return ((feature['snapYes']  > 399) && (feature['snapYes']  < 500));
-    }
-}
-
-
 function exp_PredSNAP2018_1rule4_eval_expression(context) {
-    // snapYes < 400
+    // snapYes < 500
 
     var feature = context.feature;
     
     if (feature.properties) {
-        return (feature.properties['snapYes']  < 400);
+        return (feature.properties['snapYes']  < 500);
     } else {
-        return (feature['snapYes']  < 400);
+        return (feature['snapYes']  < 500);
     }
 }

@@ -19,7 +19,7 @@
             margin: 0;
         }
         </style>
-        <title>SNAP 2018 Projections</title>
+        <title>SNAP 2018 Predictions</title>
     </head>
     <body>
         <div id="map">
@@ -36,11 +36,11 @@
         <script src="js/labels.js"></script>
         <script src="js/leaflet.photon.js"></script>
         <script src="data/PredSNAP2018_1.js"></script>
-        <script src="data/StatesNames_2.js"></script>
+        <script src="data/StatesNamesLabel_2.js"></script>
         <script>
         var map = L.map('map', {
             zoomControl:false, maxZoom:28, minZoom:1
-        }).fitBounds([[20.284032829856866,-135.3543394470005],[50.75323986813453,-60.659823951584436]]);
+        }).fitBounds([[17.290045369107915,-139.29697629439144],[53.13185592526409,-45.078539306891415]]);
         var hash = new L.Hash(map);
         map.attributionControl.setPrefix('<a href="https://github.com/qgis2web/qgis2web" target="_blank">qgis2web</a> &middot; <a href="https://leafletjs.com" title="A JS library for interactive maps">Leaflet</a> &middot; <a href="https://qgis.org">QGIS</a>');
         var autolinker = new Autolinker({truncate: {length: 30, location: 'smart'}});
@@ -127,15 +127,40 @@
         function pop_PredSNAP2018_1(feature, layer) {
             var popupContent = '<table>\
                     <tr>\
-                        <td class="visible-with-data" id="NAME" colspan="2"><strong>State</strong><br />' + (feature.properties['NAME'] !== null ? autolinker.link(String(feature.properties['NAME']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                        <td colspan="2">' + (feature.properties['qc_id'] !== null ? autolinker.link(String(feature.properties['qc_id']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
-                        <th scope="row">SNAP Count No</th>\
-                        <td class="visible-with-data" id="snapNo">' + (feature.properties['snapNo'] !== null ? autolinker.link(String(feature.properties['snapNo']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                        <td colspan="2">' + (feature.properties['statefp'] !== null ? autolinker.link(String(feature.properties['statefp']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
-                        <th scope="row">SNAP Count Yes</th>\
-                        <td class="visible-with-data" id="snapYes">' + (feature.properties['snapYes'] !== null ? autolinker.link(String(feature.properties['snapYes']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                        <td colspan="2">' + (feature.properties['statens'] !== null ? autolinker.link(String(feature.properties['statens']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['affgeoid'] !== null ? autolinker.link(String(feature.properties['affgeoid']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['geoid'] !== null ? autolinker.link(String(feature.properties['geoid']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['stusps'] !== null ? autolinker.link(String(feature.properties['stusps']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['name'] !== null ? autolinker.link(String(feature.properties['name']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['lsad'] !== null ? autolinker.link(String(feature.properties['lsad']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['aland'] !== null ? autolinker.link(String(feature.properties['aland']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['awater'] !== null ? autolinker.link(String(feature.properties['awater']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['snapno'] !== null ? autolinker.link(String(feature.properties['snapno']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['snapyes'] !== null ? autolinker.link(String(feature.properties['snapyes']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
                     </tr>\
                 </table>';
             var content = removeEmptyRowsFromPopupContent(popupContent, feature);
@@ -243,34 +268,37 @@
         });
         bounds_group.addLayer(layer_PredSNAP2018_1);
         map.addLayer(layer_PredSNAP2018_1);
-        function pop_StatesNames_2(feature, layer) {
+        function pop_StatesNamesLabel_2(feature, layer) {
             var popupContent = '<table>\
                     <tr>\
-                        <td colspan="2">' + (feature.properties['STATEFP'] !== null ? autolinker.link(String(feature.properties['STATEFP']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                        <td colspan="2">' + (feature.properties['qc_id'] !== null ? autolinker.link(String(feature.properties['qc_id']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
-                        <td colspan="2">' + (feature.properties['STATENS'] !== null ? autolinker.link(String(feature.properties['STATENS']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                        <td colspan="2">' + (feature.properties['statefp'] !== null ? autolinker.link(String(feature.properties['statefp']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
-                        <td colspan="2">' + (feature.properties['AFFGEOID'] !== null ? autolinker.link(String(feature.properties['AFFGEOID']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                        <td colspan="2">' + (feature.properties['statens'] !== null ? autolinker.link(String(feature.properties['statens']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
-                        <td colspan="2">' + (feature.properties['GEOID'] !== null ? autolinker.link(String(feature.properties['GEOID']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                        <td colspan="2">' + (feature.properties['affgeoid'] !== null ? autolinker.link(String(feature.properties['affgeoid']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
-                        <td colspan="2">' + (feature.properties['STUSPS'] !== null ? autolinker.link(String(feature.properties['STUSPS']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                        <td colspan="2">' + (feature.properties['geoid'] !== null ? autolinker.link(String(feature.properties['geoid']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
-                        <td colspan="2">' + (feature.properties['NAME'] !== null ? autolinker.link(String(feature.properties['NAME']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                        <td colspan="2">' + (feature.properties['stusps'] !== null ? autolinker.link(String(feature.properties['stusps']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
-                        <td colspan="2">' + (feature.properties['LSAD'] !== null ? autolinker.link(String(feature.properties['LSAD']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                        <td colspan="2">' + (feature.properties['name'] !== null ? autolinker.link(String(feature.properties['name']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
-                        <td colspan="2">' + (feature.properties['ALAND'] !== null ? autolinker.link(String(feature.properties['ALAND']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                        <td colspan="2">' + (feature.properties['lsad'] !== null ? autolinker.link(String(feature.properties['lsad']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
-                        <td colspan="2">' + (feature.properties['AWATER'] !== null ? autolinker.link(String(feature.properties['AWATER']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                        <td colspan="2">' + (feature.properties['aland'] !== null ? autolinker.link(String(feature.properties['aland']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['awater'] !== null ? autolinker.link(String(feature.properties['awater']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
                     </tr>\
                 </table>';
             var content = removeEmptyRowsFromPopupContent(popupContent, feature);
@@ -280,37 +308,37 @@
 			layer.bindPopup(content, { maxHeight: 400 });
         }
 
-        function style_StatesNames_2_0() {
+        function style_StatesNamesLabel_2_0() {
             return {
                 fill: false,
                 stroke: false,
                 interactive: false
             }
         }
-        map.createPane('pane_StatesNames_2');
-        map.getPane('pane_StatesNames_2').style.zIndex = 402;
-        map.getPane('pane_StatesNames_2').style['mix-blend-mode'] = 'normal';
-        var layer_StatesNames_2 = new L.geoJson(json_StatesNames_2, {
+        map.createPane('pane_StatesNamesLabel_2');
+        map.getPane('pane_StatesNamesLabel_2').style.zIndex = 402;
+        map.getPane('pane_StatesNamesLabel_2').style['mix-blend-mode'] = 'normal';
+        var layer_StatesNamesLabel_2 = new L.geoJson(json_StatesNamesLabel_2, {
             attribution: '',
             interactive: false,
-            dataVar: 'json_StatesNames_2',
-            layerName: 'layer_StatesNames_2',
-            pane: 'pane_StatesNames_2',
-            onEachFeature: pop_StatesNames_2,
+            dataVar: 'json_StatesNamesLabel_2',
+            layerName: 'layer_StatesNamesLabel_2',
+            pane: 'pane_StatesNamesLabel_2',
+            onEachFeature: pop_StatesNamesLabel_2,
             pointToLayer: function (feature, latlng) {
                 var context = {
                     feature: feature,
                     variables: {}
                 };
-                return L.circleMarker(latlng, style_StatesNames_2_0(feature));
+                return L.circleMarker(latlng, style_StatesNamesLabel_2_0(feature));
             },
         });
-        bounds_group.addLayer(layer_StatesNames_2);
-        map.addLayer(layer_StatesNames_2);
+        bounds_group.addLayer(layer_StatesNamesLabel_2);
+        map.addLayer(layer_StatesNamesLabel_2);
         var overlaysTree = [
-            {label: 'StatesNames', layer: layer_StatesNames_2},
-            {label: 'Pred SNAP 2018<br /><table><tr><td style="text-align: center;"><img src="legend/PredSNAP2018_1_700andover0.png" /></td><td>700 and over</td></tr><tr><td style="text-align: center;"><img src="legend/PredSNAP2018_1_6006991.png" /></td><td>600-699</td></tr><tr><td style="text-align: center;"><img src="legend/PredSNAP2018_1_5005992.png" /></td><td>500-599</td></tr><tr><td style="text-align: center;"><img src="legend/PredSNAP2018_1_4004993.png" /></td><td>400-499</td></tr><tr><td style="text-align: center;"><img src="legend/PredSNAP2018_1_below4004.png" /></td><td>below 400</td></tr></table>', layer: layer_PredSNAP2018_1},
-            {label: "Esri.WorldGrayCanvas", layer: layer_EsriWorldGrayCanvas_0},]
+            {label: 'StatesNamesLabel', layer: layer_StatesNamesLabel_2},
+            {label: 'Pred SNAP 2018<br /><table><tr><td style="text-align: center;"><img src="legend/PredSNAP2018_1_Over8000.png" /></td><td>Over 800</td></tr><tr><td style="text-align: center;"><img src="legend/PredSNAP2018_1_7007991.png" /></td><td>700-799</td></tr><tr><td style="text-align: center;"><img src="legend/PredSNAP2018_1_6006992.png" /></td><td>600-699</td></tr><tr><td style="text-align: center;"><img src="legend/PredSNAP2018_1_5005993.png" /></td><td>500-599</td></tr><tr><td style="text-align: center;"><img src="legend/PredSNAP2018_1_Under5004.png" /></td><td>Under 500</td></tr></table>', layer: layer_PredSNAP2018_1},
+            {label: "EsriWorldGrayCanvas", layer: layer_EsriWorldGrayCanvas_0, radioGroup: 'bm' },]
         var lay = L.control.layers.tree(null, overlaysTree,{
             //namedToggle: true,
             //selectorBack: false,
@@ -323,27 +351,27 @@
         lay.addTo(map);
         setBounds();
         var i = 0;
-        layer_StatesNames_2.eachLayer(function(layer) {
+        layer_StatesNamesLabel_2.eachLayer(function(layer) {
             var context = {
                 feature: layer.feature,
                 variables: {}
             };
-            layer.bindTooltip((layer.feature.properties['STUSPS'] !== null?String('<div style="color: #323232; font-size: 9pt; font-family: \'Segoe UI\', sans-serif;">' + layer.feature.properties['STUSPS']) + '</div>':''), {permanent: true, offset: [-0, -16], className: 'css_StatesNames_2'});
+            layer.bindTooltip((layer.feature.properties['STUSPS'] !== null?String('<div style="color: #323232; font-size: 9pt; font-family: \'Cascadia Code\', sans-serif;">' + layer.feature.properties['STUSPS']) + '</div>':''), {permanent: true, offset: [-0, -16], className: 'css_StatesNamesLabel_2'});
             labels.push(layer);
             totalMarkers += 1;
               layer.added = true;
               addLabel(layer, i);
               i++;
         });
-        resetLabels([layer_StatesNames_2]);
+        resetLabels([layer_StatesNamesLabel_2]);
         map.on("zoomend", function(){
-            resetLabels([layer_StatesNames_2]);
+            resetLabels([layer_StatesNamesLabel_2]);
         });
         map.on("layeradd", function(){
-            resetLabels([layer_StatesNames_2]);
+            resetLabels([layer_StatesNamesLabel_2]);
         });
         map.on("layerremove", function(){
-            resetLabels([layer_StatesNames_2]);
+            resetLabels([layer_StatesNamesLabel_2]);
         });
         </script>        
     </body>
