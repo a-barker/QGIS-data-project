@@ -8,23 +8,26 @@ import pickle
 from sklearn.impute import SimpleImputer
 
 
+#Original Data
 #New Mexico
-#nm07_orig = pd.read_csv('../data/nm07.csv')
-#nm17_orig = pd.read_csv('../data/nm17.csv')
+nm07_orig = pd.read_csv('../data/nm07.csv')
+nm17_orig = pd.read_csv('../data/nm17.csv')
 
 #Nebraska
-#ne07_orig = pd.read_csv('../data/ne07.csv')
-#ne17_orig = pd.read_csv('../data/ne17.csv')
+ne07_orig = pd.read_csv('../data/ne07.csv')
+ne17_orig = pd.read_csv('../data/ne17.csv')
 
+#CLEAN DATA
 #New Mexico
-#nm07 = pd.read_csv('../data/nm07.csv')
-#nm17 = pd.read_csv('../data/nm17.csv')
+nm07 = pd.read_csv('../data/clean_nm07.csv')
+nm17 = pd.read_csv('../data/clean_nm17.csv')
 
 #Nebraska
-#ne07 = pd.read_csv('../data/clean_ne07.csv')
-#ne17 = pd.read_csv('../data/clean_ne17.csv')
+ne07 = pd.read_csv('../data/clean_ne07.csv')
+ne17 = pd.read_csv('../data/clean_ne17.csv')
 
-#corr_features = pd.read_csv('../data/corr_features.csv')
+
+corr_features = pd.read_csv('../data/corr_features.csv')
 
 ################
     #EDA
@@ -132,4 +135,32 @@ def final(fullname, dataset):
         except:
             continue
     fullname_df['CAT_ELIG']=dataset['CAT_ELIG']
+    return fullname_df
+
+################################
+    #Predictions
+################################
+
+def clean_data_to_predict(dataset):
+    """Cleans new datasets for processing through prediction"""
+    fullname_df = pd.DataFrame()
+    fullname_df['state']=dataset['STATENAME']
+    for feature in corr_features['Table 1']:
+        try:
+            fullname_df[feature] = dataset[feature].astype('float64')
+        except:
+            continue
+    fullname_df['VEHICLEA']=fullname_df['VEHICLEA'].fillna(1) #set nulls to 1 for "no car"
+    fullname_df=fullname_df.dropna() #drop the remaining null values out of the reduced column set
+    return fullname_df
+
+def top_coef_df(fullname, dataset):
+    """Creates a dataframe on .corr(), used for unit categories."""
+    fullname_df = pd.DataFrame()
+    for ea in fullname['feature']:
+        try:
+            fullname_df[ea] = dataset[ea]
+        except:
+            continue
+    fullname_df['state']=dataset['state']
     return fullname_df
